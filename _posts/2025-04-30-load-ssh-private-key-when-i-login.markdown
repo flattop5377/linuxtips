@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to ask once for your SSH private key password"
+title:  "How to load a SSH private key when I login"
 ---
 
 ## Goals
