@@ -1,4 +1,6 @@
-# This probably doesn't need to be changed
+#!/bin/sh
+#
+## This probably doesn't need to be changed
 SSH_ENV="$HOME/.ssh/agent-environment"
 
 function start_agent {
