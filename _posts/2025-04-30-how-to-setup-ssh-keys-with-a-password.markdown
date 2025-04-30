@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "How to setup SSH keys with a password"
+title:  "How to ask once for your SSH private key password"
 ---
 
-# Goals
+## Goals
 
   * Use a password on the SSH key to help protect it if it's stolen.
-  * Enter the password a minimum number of times.
+  * Use ssh-agent so that you only have to enter the password for your key once.
 
 ## Protect the private SSH key with a password
 
