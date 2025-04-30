@@ -1,0 +1,23 @@
+---
+- name: Setup ssh-agent to load private keys if they haven't already been loaded
+  hosts: 127.0.0.1
+  tasks:
+
+    - name: Create $HOME/sbin if it doesn't exist
+      ansible.builtin.file: 
+        path: '{{ ansible_env.HOME }}/sbin'
+        mode: u=rwx,g=rx,o=rx
+        state: directory
+
+    - name: Download ssh-agent-setup.sh from Github and verify the checksum
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/flattop5377/linuxtips/refs/heads/main/_includes/scripts/ssh-agent-setup.sh
+        dest: '{{ ansible_env.HOME }}/sbin/ssh-agent-setup.sh'
+        mode: u=rwx,g=r,o=r
+        checksum: sha512:https://raw.githubusercontent.com/flattop5377/linuxtips/refs/heads/main/_includes/scripts/ssh-agent-setup.sh.sha512
+
+    - name: Add a line to .profile to run ssh-agent-setup.sh
+      ansible.builtin.lineinfile:
+        path: '{{ ansible_env.HOME }}/.profile'
+        regexp: '^if \[ \-x "\$HOME/sbin/ssh-agent-setup.sh".*$'
+        line: 'if [ -x "$HOME/sbin/ssh-agent-setup.sh" ] ; then source $HOME/sbin/ssh-agent-setup.sh; fi'
