@@ -65,7 +65,7 @@ I use ~/.profile to run ssh-agent with a line like:
 if [ -x "$HOME/sbin/ssh-agent-setup.sh" ] ; then source $HOME/sbin/ssh-agent-setup.sh; fi'
 ```
 
-The setup script:
+The script to place in $HOME/sbin:
 
 ```
 {% include scripts/ssh-agent-setup.sh %}
