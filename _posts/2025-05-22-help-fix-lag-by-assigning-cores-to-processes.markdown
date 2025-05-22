@@ -16,7 +16,7 @@ and just want to reduce lag.
 If the process is already running, get the Process ID and then use taskset
 ```
 ps -uax | grep qemu
-taskset <cores> -p <process id>
+taskset -p <cores> <process id>
 ```
 
 If the process isn't running, just use taskset first:
